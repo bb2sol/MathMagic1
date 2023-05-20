@@ -8,16 +8,18 @@ const magicTable = [
 
 let answer = 0;
 let index = 0;
+let no = 0;
 
-const tablePage = `
+let tablePage = `
 <div class="content">
-<strong class="question">생각한 수가 이 표에 있습니까?(1/5)</strong>
+<progress value="0" max="5" class="progress_bar"></progress>
+<strong class="question">생각한 수가 이 표에 있습니까?</strong>
 <table class="table">
 
 </table>
 <div class="btn_box">
-    <button type="button" class="btn_base point" id="btn_yes" value="yes">예</button>
-    <button type="button" class="btn_base" id="btn_no" value="no">아니오</button>
+    <button type="button" class="btn_base" id="btn_yes">예</button>
+    <button type="button" class="btn_base" id="btn_no">아니오</button>
 </div>
 </div>`;
 
@@ -41,6 +43,7 @@ $(function(){
 
     $(document).on('click', "#btn_no", function () {
         index += 1;
+        no += 1;
 
         if (index >= 5) {
             setResultPage();
@@ -55,6 +58,7 @@ $(function(){
 });
 
 function setNextTable() {
+    $(".progress_bar").val(index + 1);
     if (index < 5) {
         $(".table").empty();
 
@@ -73,7 +77,7 @@ function setResultPage() {
 <div class="content">
     <strong class="question">생각한 수는 ... <br> ${answer} 입니다</strong>
     <div class="btn_box">
-        <button type="button" class="btn_base point" id="btn_reset">처음으로</button>
+        <button type="button" class="btn_base" id="btn_reset">처음으로</button>
     </div>
 </div>`;
     $(".container").html(resultPage);
