@@ -29,6 +29,9 @@ body,
 
 .img_magician {
     display: block;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
     margin: 0 auto;
     padding-top: 60px;
 }

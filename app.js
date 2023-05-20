@@ -71,6 +71,7 @@ function setNextTable() {
 function setResultPage() {
     const resultPage = `
 <div class="content">
+    <img src="img/magic-wand.png" alt="마술사" class="img_magician">
     <strong class="question">생각한 수는 ... <br> ${answer} 입니다</strong>
     <div class="btn_box">
         <button type="button" class="btn_base point" id="btn_reset">처음으로</button>
