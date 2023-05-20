@@ -8,7 +8,6 @@ const magicTable = [
 
 let answer = 0;
 let index = 0;
-let no = 0;
 
 let tablePage = `
 <div class="content">
@@ -43,10 +42,14 @@ $(function(){
 
     $(document).on('click', "#btn_no", function () {
         index += 1;
-        no += 1;
 
         if (index >= 5) {
-            setResultPage();
+            if (answer == 0) {
+                setErrorPage();
+            }
+            else {
+                setResultPage();
+            }
         }
 
         setNextTable();
@@ -81,4 +84,15 @@ function setResultPage() {
     </div>
 </div>`;
     $(".container").html(resultPage);
+}
+
+function setErrorPage() {
+    const errorPage = `
+    <div class="content">
+        <strong class="question">1~31중에서 생각하세요!!</strong>
+        <div class="btn_box">
+            <button type="button" class="btn_base" id="btn_reset">처음으로</button>
+        </div>
+    </div>`;
+        $(".container").html(errorPage);
 }
